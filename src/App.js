@@ -1,25 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect } from 'react'
+import { Route } from 'react-router-dom'
+import axios from 'axios'
 
-function App() {
+import { Header } from './components'
+import { Home } from './pages'
+import { Cart } from './pages'
+
+
+function App () {
+  const [items, setItems] = React.useState([]);
+
+  useEffect(() => {
+    axios.get('http://localhost:3000/database.json').then(({data}) => {
+	  setItems(data.pizzas)
+	})
+  }, [])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	<div className="wrapper">`
+	  <Header/>
+	  <div className="content">
+		<Route exact path="/" render={()=> <Home items={items} /> } />
+		<Route exact path="/cart" component={Cart} />
+	  </div>
+	</div>
+  )
 }
 
 export default App;
