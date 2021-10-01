@@ -9,7 +9,7 @@ const SortPopUp = React.memo(({items, onClickSortType, activeSortType}) => {
 
   const toggleVisiblePopUp = () => {
 	setVisiblePopUp(!visiblePopUp)
-
+	console.log(sortRef)
   }
 
   const handleOutsideClick = (e) => {

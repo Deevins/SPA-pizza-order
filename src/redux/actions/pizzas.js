@@ -1,9 +1,10 @@
 import axios from 'axios'
+import { SET_LOADED, SET_PIZZAS } from '../constant'
 
 
 export const fetchData = (sortBy, category) => (dispatch) => {
   dispatch({
-    type: 'SET_LOADED',
+    type: SET_LOADED,
     payload: false
   })
   axios
@@ -14,6 +15,6 @@ export const fetchData = (sortBy, category) => (dispatch) => {
 }
 
 export const setPizzas = (items) => ({
-  type: 'SET_PIZZAS',
+  type: SET_PIZZAS,
   payload: items
 })

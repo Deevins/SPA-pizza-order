@@ -8,7 +8,7 @@ import cartEmptyImage from '../assets/img/empty-cart.png'
 
 const Cart = () => {
   const dispatch = useDispatch()
-
+// connect this comp with redux using hook
   const {totalPrice, totalCount, items} = useSelector(({cart}) => cart)
 
   const addedPizzas = Object.keys(items).map(key => {
@@ -26,17 +26,9 @@ const Cart = () => {
 	}
   }
 
-  const onPlusItem = id => {
-    dispatch(plusItem(id))
-  }
-  const onMinusItem = id => {
-	dispatch(minusItem(id))
-  }
-
-  const onClickOrder = () => {
-	console.log('Ваш заказ: ', items)
-
-  }
+  const onPlusItem = id => {dispatch(plusItem(id))}
+  const onMinusItem = id => {dispatch(minusItem(id))}
+  const onClickOrder = () => {console.log('Ваш заказ: ', items)}
 
   return (
 	<div className="content">
